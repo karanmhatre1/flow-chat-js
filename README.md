@@ -1,13 +1,13 @@
 # Flow Chat JS Plugin
-========================
 
-Javascript plugin to help developers build a conversational chat flow.
+A Javascript plugin to help developers build simple conversational chat flow.
 
 ![License](https://img.shields.io/npm/l/@oclif/example-plugin-js.svg)
 
 ## Demos
 
 
+## Usage
 ### Include With Vanilla JS
 
 1. Include JQuery
@@ -19,13 +19,13 @@ Javascript plugin to help developers build a conversational chat flow.
 <script src="textblock.min.js"></script>
 
 <script>
-  Textblock([{
+  $('#flowchat').flowchat({
     data: false, // require a JSON to be passed
     delay: 1500,
     startButtonId: '#startButton',
     autoStart: true,
     startMessageId: 1
-  }]);
+  });
 </script>
 
 ```
