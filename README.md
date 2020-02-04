@@ -3,7 +3,7 @@
 
 Javascript plugin to help developers build a conversational chat flow.
 
-[![License](https://img.shields.io/npm/l/@oclif/example-plugin-js.svg)]
+![License](https://img.shields.io/npm/l/@oclif/example-plugin-js.svg)
 
 ## Demos
 
