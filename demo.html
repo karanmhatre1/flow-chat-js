@@ -1,0 +1,39 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Chat Flow</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="src/flowchat.css">
+</head>
+
+<body>
+  <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+  <!-- Add your site or application content here -->
+
+  <a href="#" id="startButton">Start</a></li>
+
+  <div class="container" id="flowchat"></div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="src/flowchat.js"></script>
+  <script>
+    $(function() {
+      $.getJSON( "data/data.json", function( dataJSON ) {
+        $('#flowchat').flowchat({
+          data: dataJSON
+        });
+      });
+    });
+  </script>
+
+</body>
+
+</html>
