@@ -6,6 +6,7 @@ A Javascript plugin to help developers build simple conversational chat flow.
 
 ## Demos
 
+[Flow Chat Demo](http://karanmhatre.com/flow-chat-js-demo.html)
 
 ## Usage
 ### Include With Vanilla JS
