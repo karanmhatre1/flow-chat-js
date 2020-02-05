@@ -27,6 +27,7 @@ ul.chat-window>li {
   clear: both;
   max-width: 80%;
   box-sizing: border-box;
+  white-space: pre-wrap;
 }
 
 ul.chat-window>li.user {
@@ -64,6 +65,7 @@ ul.chat-window>li.options>ul>li {
   display: inline-block;
   cursor: pointer;
   margin-left: 10px;
+  margin-bottom: 10px;
 }
 
 .typing-indicator {

@@ -20,7 +20,7 @@
         startChat(container, settings.dataJSON, settings.startMessageId, settings.delay)
     });
 
-    $(document).on('click', '.options li', function() {
+    $(document).on('click', '#' + container.attr('id') + ' .options li', function() {
 
       // clear the options when one option is selected by the user
       $(this).parent().hide();
