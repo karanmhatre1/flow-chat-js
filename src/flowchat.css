@@ -1,30 +1,15 @@
-body {
-  background-color: #fefefe;
-}
-
-.container {
-  font-family: 'Open Sans', sans-serif;
-  max-width: 360px;
-  height: 400px;
-  overflow: hidden;
-  margin: auto;
-  margin-top: 20px;
-  border-radius: 20px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  box-sizing: border-box;
-}
-
 ul.chat-window {
+  width: 100%;
   height: 100%;
-  height: 300px;
   overflow: scroll;
   margin-top: 0;
   padding: 20px;
   list-style: none;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-ul.chat-window li .text {
+ul.chat-window>li .text {
   box-sizing: border-box;
   margin-bottom: 10px;
   border-radius: 10px;
@@ -32,30 +17,31 @@ ul.chat-window li .text {
   line-height: 20px;
 }
 
-li.bot .text {
+ul.chat-window>li.bot .text {
   background-color: #01bad8;
   color: #fff;
   float: left;
 }
 
-ul.chat-window li {
+ul.chat-window>li {
   clear: both;
   max-width: 80%;
+  box-sizing: border-box;
 }
 
-li.user {
+ul.chat-window>li.user {
   float: right;
 }
 
-li.bot {
+ul.chat-window>li.bot {
   float: left;
 }
 
-li.user .text {
+ul.chat-window>li.user .text {
   background-color: #ddd;
 }
 
-ul.chat-window li.options {
+ul.chat-window>li.options {
   margin-top: 10px;
   list-style: none;
   max-width: 100%;
@@ -64,30 +50,20 @@ ul.chat-window li.options {
   text-align: right;
 }
 
-li.options ul {
+ul.chat-window>li.options>ul {
   margin-top: 0;
   padding: 0;
   list-style: none;
   margin-top: 10px;
 }
 
-li.options ul li {
-  margin-bottom: 10px;
+ul.chat-window>li.options>ul>li {
   border-radius: 10px;
   padding: 5px 10px;
   border: 1px solid #01bad8;
   display: inline-block;
-  margin-right: 10px;
   cursor: pointer;
-}
-
-a#startButton {
-  border: 1px solid #01bad8;
-  background-color: #fff;
-  padding: 5px 8px;
-  border-radius: 10px;
-  color: #01bad8;
-  text-decoration: none;
+  margin-left: 10px;
 }
 
 .typing-indicator {

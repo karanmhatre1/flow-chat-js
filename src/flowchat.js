@@ -1,3 +1,4 @@
+"use strict";
 (function( $ ) {
 
   $.fn.flowchat = function( options ) {
@@ -9,15 +10,14 @@
       startButtonId: '#startButton',
       autoStart: true,
       startMessageId: 1,
-      data: null
+      dataJSON: null
     }, options );
 
-    var container = $(this)
+    var container = $(this);
 
     $(function() {
-
       if(settings.autoStart)
-        startChat(container, settings.data, settings.startMessageId, settings.delay)
+        startChat(container, settings.dataJSON, settings.startMessageId, settings.delay)
     });
 
     $(document).on('click', '.options li', function() {
@@ -26,23 +26,23 @@
       $(this).parent().hide();
 
       // insert user chat
-      userReply = '<li class="user"><div class="text">'+ $(this).html() +'</div></li>';
+      var userReply = '<li class="user"><div class="text">'+ $(this).html() +'</div></li>';
       container.children('.chat-window').append(userReply);
 
       // get the next message
-      messages = settings.data;
-      nextMessageId = $(this).attr('data-nextId');
-      nextMessage = findMessageInJsonById(messages, nextMessageId);
+      var messages = settings.dataJSON;
+      var nextMessageId = $(this).attr('data-nextId');
+      var nextMessage = findMessageInJsonById(messages, nextMessageId);
 
       // add next message
-      generateMessageHTML(messages, nextMessage, settings.delay);
+      generateMessageHTML(container, messages, nextMessage, settings.delay);
 
     });
 
     // on click of Start button
     $(document).on('click', settings.startButtonId, function() {
 
-      startChat(container, settings.data, settings.startMessageId, settings.delay)
+      startChat(container, settings.dataJSON, settings.startMessageId, settings.delay)
 
     });
   }
@@ -53,17 +53,17 @@
     container.append("<ul class='chat-window'></ul>");
 
     // get the first message
-    message = findMessageInJsonById(data, startId);
+    var message = findMessageInJsonById(data, startId);
 
     // add message
-    generateMessageHTML(data, message, delay);
+    generateMessageHTML(container, data, message, delay);
   }
 
   function findMessageInJsonById(data, id) {
 
     var messages = data;
 
-    for (i = 0; messages.length > i; i ++)
+    for (var i = 0; messages.length > i; i ++)
       if (messages[i].id == id)
         return messages[i];
 
@@ -71,13 +71,17 @@
 
   function addOptions(m) {
 
-    template = '<li class="options"><ul>'
+    var template = '<li class="options"><ul>';
 
-    for (i=1;i<6;i++){
+    var optionText = null;
+
+    var optionMessageId = null;
+
+    for (var i=1;i<6;i++) {
       optionText = m["option"+i]
       optionMessageId = m["option"+i+"_nextMessageId"]
 
-      if (optionText != "") // add option only if text exists
+      if (optionText != "" && optionText != undefined && optionText != null) // add option only if text exists
         template = template + "<li data-nextId=" + optionMessageId + ">" + optionText + "</li>"
     }
 
@@ -86,39 +90,39 @@
     return template;
   }
 
-  function toggleLoader(status) {
+  function toggleLoader(status, container) {
     if(status=="show")
-      $('.chat-window').append("<li class='typing-indicator'><span></span><span></span><span></span></li>");
+      container.children('.chat-window').append("<li class='typing-indicator'><span></span><span></span><span></span></li>");
     else
-      $('.typing-indicator').remove();
+      container.find('.typing-indicator').remove();
   }
 
-  function generateMessageHTML(messages, m, delay) {
+  function generateMessageHTML(container, messages, m, delay) {
 
     // create template
-    template = '<li class="bot"><div class="text">'+ m.text +'</div></li>';
+    var template = '<li class="bot"><div class="text">'+ m.text +'</div></li>';
 
     // if the message is a question then add options
     if (m.messageType == "Question")
       template = template + addOptions(m);
 
-    toggleLoader("show");
+    toggleLoader("show", container);
 
-    $(".chat-window").scrollTop($(".chat-window").prop('scrollHeight'));
+    container.children(".chat-window").scrollTop($(".chat-window").prop('scrollHeight'));
 
     // add delay to chat message
     setTimeout(function() {
 
-      toggleLoader("hide");
-      $('.chat-window').append(template);
+      toggleLoader("hide", container);
 
-      $(".chat-window").scrollTop($(".chat-window").prop('scrollHeight'));
+      container.children('.chat-window').append(template);
+
+      container.children(".chat-window").scrollTop($(".chat-window").prop('scrollHeight'));
 
       // call recursively if nextMessageId exists
       if (m.nextMessageId != "") {
-        console.log(m.nextMessageId);
-        nextMessage = findMessageInJsonById(messages, m.nextMessageId)
-        generateMessageHTML(messages, nextMessage, delay)
+        var nextMessage = findMessageInJsonById(messages, m.nextMessageId)
+        generateMessageHTML(container, messages, nextMessage, delay)
       }
 
     }, delay);

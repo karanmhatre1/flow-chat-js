@@ -1,0 +1,25 @@
+[{
+    "id": 1,
+    "text": "How are you?",
+    "messageType": "Question",
+    "imageUrl": "",
+    "nextMessageId": "",
+    "option1": "I'm fine",
+    "option1_nextMessageId": 2,
+    "option2": "Not too great",
+    "option2_nextMessageId": 3
+  },
+  {
+    "id": 2,
+    "text": "That's good! Keep up the optimism.",
+    "messageType": "Text",
+    "imageUrl": "",
+    "nextMessageId": ""
+  },
+  {
+    "id": 3,
+    "text": "That's too bad. Hope things get better for you soon.",
+    "messageType": "Text",
+    "imageUrl": "",
+    "nextMessageId": ""
+  }]

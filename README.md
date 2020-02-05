@@ -46,25 +46,32 @@ I have included as .tsv file as a demo. You can modify the TSV, [covert it to a 
 
 This is the format for a single message.
 ```json
-{
-  "id": 1,
-  "text": "How are you?",
-  "messageType": "Question",
-  "imageUrl": "",
-  "nextMessageId": "",
-  "option1": "Fine",
-  "option1_nextMessageId": 2,
-  "option2": "Good",
-  "option2_nextMessageId": "3",
-  "option3": "No Good",
-  "option3_nextMessageId": "4",
-  "option4": "",
-  "option4_nextMessageId": "",
-  "option5": "",
-  "option5_nextMessageId": "",
-  "option6": "",
-  "option6_nextMessageId": ""
-}
+[{
+    "id": 1,
+    "text": "How are you?",
+    "messageType": "Question",
+    "imageUrl": "",
+    "nextMessageId": "",
+    "option1": "I'm fine",
+    "option1_nextMessageId": 2,
+    "option2": "Not too great",
+    "option2_nextMessageId": 3
+  },
+  {
+    "id": 2,
+    "text": "That's good! Keep up the optimism.",
+    "messageType": "Text",
+    "imageUrl": "",
+    "nextMessageId": ""
+  },
+  {
+    "id": 3,
+    "text": "That's too bad. Hope things get better for you soon.",
+    "messageType": "Text",
+    "imageUrl": "",
+    "nextMessageId": ""
+  }
+, { "id": 4, ... }, .... { "id": 45, ...} ]
 ```
 
 - **`id`** (required): This is the message id. Should be kept unique.
@@ -74,11 +81,12 @@ This is the format for a single message.
 - **`option1`**: If type is a "Question", then option text will be shown to the user to select as input.
 - **`option1_nextMessageId`**: If user selects option 1, then the id of the next message to be sent.
 
+Add Upto 6 options for each message. For TEXT messages you can skip adding options entirely.
+
 You can add as many message as you like and chain them together. The conversation will end when there is no "nextMessageId"
 
 ## Future Scope
 
-- Future Scope
 - Image and GIF support
 - URL message support
 - Designing options - background image, etc.
