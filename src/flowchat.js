@@ -73,7 +73,7 @@
 
     var optionMessageId = null;
 
-    for (var i=1;i<6;i++) {
+    for (var i=1;i<12;i++) {
       optionText = m["option"+i]
       optionMessageId = m["option"+i+"_nextMessageId"]
 
