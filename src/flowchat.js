@@ -102,8 +102,11 @@
 
   function generateMessageHTML(container, messages, m, delay) {
 
-    // create template
-    var $template = $('<li class="bot"><div class="text">'+ m.text +'</div></li>');
+    // create template if text is not null
+    if(m.text != null)
+      var $template = $('<li class="bot"><div class="text">'+ m.text +'</div></li>');
+    else
+      var $template = $('');
 
     toggleLoader("show", container);
 
