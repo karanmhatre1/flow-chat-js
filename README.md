@@ -1,7 +1,7 @@
 # Flow Chat JS Plugin
 
 A Javascript plugin to help developers build simple conversational chat flow.
-
+[![Build Status](https://travis-ci.org/karanmhatre1/flow-chat-js.svg?branch=master)](https://travis-ci.org/karanmhatre1/flow-chat-js)
 ![License](https://img.shields.io/npm/l/@oclif/example-plugin-js.svg)
 
 ## Demos

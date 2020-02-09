@@ -29,7 +29,6 @@
   }
 
   function selectOption($this, container, data, delay) {
-    console.log("here");
     $this.parent().hide();
     var $userReply = $('<li class="user"><div class="text">'+ $this.html() +'</div></li>');
     container.children('.chat-window').append($userReply);
