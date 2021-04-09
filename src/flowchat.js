@@ -103,7 +103,10 @@
   function generateMessageHTML(container, messages, m, delay) {
 
     // create template if text is not null
-    if(m.text != null)
+    console.log(m.imageUrl);
+    if(m.imageUrl != '')
+      var $template = $('<li class="bot"><div class="text">' + '<img src="' + m.imageUrl + '"><br/>' + m.text + '</div></li>');
+    else if(m.text != null)
       var $template = $('<li class="bot"><div class="text">'+ m.text +'</div></li>');
     else
       var $template = $('');
